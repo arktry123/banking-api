@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: banking
+  main:
+    allow-bean-definition-overriding: true
+  port: 8080
+  datasource:
+    url: jdbc:h2:mem:testdb     # in-memory H2 database
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    h2:
+      console:
+        enabled: true              # enable H2 console at /h2-console
+        path: /h2-console
+
+    jpa:
+      hibernate:
+        ddl-auto: update           # auto-create/update schema
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
+app:
+  jwt:
+    secret: "change-this-secret-to-a-long-random-value"
+    issuer: "eagle-bank"
+    expiration-seconds: 3600
