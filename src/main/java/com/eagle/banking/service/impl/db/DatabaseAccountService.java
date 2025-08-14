@@ -4,14 +4,12 @@ import com.eagle.banking.exception.ResourceNotFoundException;
 import com.eagle.banking.model.Account;
 import com.eagle.banking.repo.AccountRepository;
 import com.eagle.banking.service.AccountService;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Profile("!local")
 public class DatabaseAccountService implements AccountService {
 
     private final AccountRepository accountRepository;

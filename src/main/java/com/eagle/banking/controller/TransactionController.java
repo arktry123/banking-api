@@ -1,11 +1,11 @@
 package com.eagle.banking.controller;
 
+import com.eagle.banking.dto.TransactionDto;
 import com.eagle.banking.exception.ForbiddenException;
 import com.eagle.banking.exception.InsufficientFundsException;
 import com.eagle.banking.exception.InvalidRequestException;
 import com.eagle.banking.model.Account;
 import com.eagle.banking.model.Transaction;
-import com.eagle.banking.dto.TransactionDto;
 import com.eagle.banking.model.TransactionType;
 import com.eagle.banking.service.AccountService;
 import com.eagle.banking.service.TransactionService;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.eagle.banking.helper.AuthHelper.requireAuth;
 import static com.eagle.banking.dto.TransactionDto.fromEntity;
+import static com.eagle.banking.helper.AuthHelper.requireAuth;
 
 @RestController
 @RequestMapping("/v1/accounts/{accountId}/transactions")

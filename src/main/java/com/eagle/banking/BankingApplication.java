@@ -6,9 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication(scanBasePackages = "com.eagle.banking")
 public class BankingApplication {
 
-	public static void main(String[] args) {
-		SpringApplicationBuilder appBuilder = new SpringApplicationBuilder(BankingApplication.class);
-		appBuilder.run(args);
-	}
+    public static void main(String[] args) {
+        SpringApplicationBuilder appBuilder = new SpringApplicationBuilder(BankingApplication.class);
+        appBuilder.run(args);
+    }
 
 }

@@ -5,6 +5,7 @@ import com.eagle.banking.model.User;
 import com.eagle.banking.repo.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
@@ -16,10 +17,12 @@ class DatabaseUserServiceTest {
     private UserRepository userRepository;
     private DatabaseUserService userService;
 
+    private final BCryptPasswordEncoder encoder = mock(BCryptPasswordEncoder.class);
+
     @BeforeEach
     void setUp() {
         userRepository = mock(UserRepository.class);
-        userService = new DatabaseUserService(userRepository);
+        userService = new DatabaseUserService(userRepository, encoder);
     }
 
     @Test

@@ -9,10 +9,10 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    h2:
-      console:
-        enabled: true              # enable H2 console at /h2-console
-        path: /h2-console
+  h2:
+    console:
+      enabled: true              # enable H2 console at /h2-console
+      path: /h2-console
 
     jpa:
       hibernate:

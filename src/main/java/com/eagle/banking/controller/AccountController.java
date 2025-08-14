@@ -1,8 +1,8 @@
 package com.eagle.banking.controller;
 
+import com.eagle.banking.dto.AccountDto;
 import com.eagle.banking.exception.ForbiddenException;
 import com.eagle.banking.model.Account;
-import com.eagle.banking.dto.AccountDto;
 import com.eagle.banking.service.AccountService;
 import com.eagle.banking.service.TransactionService;
 import com.eagle.banking.service.UserService;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.eagle.banking.helper.AuthHelper.requireAuth;
 import static com.eagle.banking.dto.AccountDto.fromEntity;
+import static com.eagle.banking.helper.AuthHelper.requireAuth;
 
 @RestController
 @RequestMapping("/v1/accounts")

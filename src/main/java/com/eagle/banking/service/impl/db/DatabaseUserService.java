@@ -1,26 +1,33 @@
 package com.eagle.banking.service.impl.db;
 
+import com.eagle.banking.exception.ConflictException;
 import com.eagle.banking.exception.ResourceNotFoundException;
 import com.eagle.banking.model.User;
 import com.eagle.banking.repo.UserRepository;
 import com.eagle.banking.service.UserService;
-import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-@Profile("!local")
 public class DatabaseUserService implements UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder encoder;
 
-    public DatabaseUserService(UserRepository userRepository) {
+    public DatabaseUserService(UserRepository userRepository, BCryptPasswordEncoder encoder) {
         this.userRepository = userRepository;
+        this.encoder = encoder;
     }
 
     @Override
     public User create(User user) {
+        boolean exists = userRepository.findAll().stream()
+                .anyMatch(u -> u.getUsername().equalsIgnoreCase(user.getUsername()));
+        if (exists) throw new ConflictException("username already exists");
+
+        user.setPassword(encoder.encode(user.getPassword()));
         return maskPassword(userRepository.save(user));
     }
 
